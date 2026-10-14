@@ -8,7 +8,7 @@ export namespace disxx::ui::ir
 	{
 	  private:
 		Type m_Type{};
-		std::variant<Property, std::vector<Widget>> m_Property{};
+		std::variant<AnyProperty, std::vector<Widget>> m_Property{};
 
 	  public:
 		explicit Widget(void) noexcept = default;

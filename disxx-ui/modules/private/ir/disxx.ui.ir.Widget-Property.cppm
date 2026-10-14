@@ -21,13 +21,14 @@ namespace disxx::ui::ir
 		TYPE_LAZYHSTACK
 	};
 
-	template <Type _Type>
-	class __attribute__((visibility("default"))) [[nodiscard]] Property {};
+	template <Type Kind>
+	class __attribute__((visibility("default"))) [[nodiscard]] Property;
 
 	template <>
 	class __attribute__((visibility("default"))) [[nodiscard]] Property<Type::TYPE_TEXT>
 	{
 	  private:
+		std::array<float, 4> m_Color{};
 		std::string m_Text{};
 
 	  public:
@@ -36,16 +37,22 @@ namespace disxx::ui::ir
 		Property(const Property &) noexcept = default;
 		Property &operator=(const Property &) noexcept = default;
 
+		inline void SetColor(std::array<float, 4>) noexcept;
 		inline void SetText(std::string_view) noexcept;
-		
+	
+		inline std::array<float, 4>	GetColor(void) const noexcept;
 		inline std::string_view GetText(void) const noexcept;
 	};
 
-	template <>
+	inline void Property<Type::TYPE_TEXT>::SetColor(std::array<float, 4> color) noexcept
+	{ this->m_Color = color; }
+	
 	inline void Property<Type::TYPE_TEXT>::SetText(std::string_view text) noexcept
 	{ this->m_Text = text; }
 
-	template <>
+	inline std::array<float, 4> Property<Type::TYPE_TEXT>::GetColor(void) const noexcept
+	{ return this->m_Color; }
+
 	inline std::string_view Property<Type::TYPE_TEXT>::GetText(void) const noexcept
 	{ return this->m_Text; }
 
@@ -66,11 +73,9 @@ namespace disxx::ui::ir
 		inline std::filesystem::path GetPath(void) const noexcept;
 	};
 
-	template <>
 	inline void Property<Type::TYPE_IMAGE>::SetPath(const std::filesystem::path path) noexcept
 	{ this->m_Path = path; }
 
-	template <>
 	inline std::filesystem::path Property<Type::TYPE_IMAGE>::GetPath(void) const noexcept
 	{ return this->m_Path; }
 
@@ -97,30 +102,57 @@ namespace disxx::ui::ir
 		inline const std::array<float, 4> &GetColor(void) const noexcept;
 	};
 
-	template <>
 	inline void Property<Type::TYPE_BUTTON>::SetPropery(std::variant<Property<Type::TYPE_TEXT>, Property<Type::TYPE_IMAGE>> property) noexcept
 	{ this->m_Property = property; }	
-	template <>
+	
 	inline void Property<Type::TYPE_BUTTON>::SetCallback(std::function<void(void)> callback) noexcept
 	{ this->m_Callback = callback; }	
 
-	template <>
 	inline void Property<Type::TYPE_BUTTON>::SetColor(std::array<float, 4> color) noexcept
 	{ this->m_Color = color; }
 
-	template <>
 	inline const std::variant<Property<Type::TYPE_TEXT>, Property<Type::TYPE_IMAGE>> &Property<Type::TYPE_BUTTON>::GetProperty(void) const noexcept
 	{ return this->m_Property; }
 
-	template <>
 	inline const std::function<void(void)> &Property<Type::TYPE_BUTTON>::GetCallback(void) const noexcept
 	{ return this->m_Callback; }
 
-	template <>
 	inline const std::array<float, 4> &Property<Type::TYPE_BUTTON>::GetColor(void) const noexcept
 	{ return this->m_Color; }
 
-	using Property = std::variant
+	template <>
+	class __attribute__((visibility("default"))) [[nodiscard]] Property<Type::TYPE_TEXTINPUT>
+	{
+	  private:
+		std::function<void(std::string)> m_Callback{};
+		std::string m_Text{};
+
+	  public:
+		explicit Property(void) noexcept = default;
+
+		Property(const Property &) noexcept = default;
+		Property &operator=(const Property &) noexcept = default;
+
+		inline void SetCallback(std::function<void(std::string)>) noexcept;
+		inline void SetText(std::string_view) noexcept;
+	
+		inline const std::function<void(std::string)> &GetCallback(void) const noexcept;	
+		inline std::string_view GetText(void) const noexcept;
+	};
+
+	inline void Property<Type::TYPE_BUTTON>::SetCallback(std::function<void(std::string)> callback) noexcept
+	{ this->m_Callback = callback; }	
+
+	inline void Property<Type::TYPE_TEXTINPUT>::SetText(std::string_view text) noexcept
+	{ this->m_Text = text; }
+
+	inline std::string_view Property<Type::TYPE_TEXTINPUT>::GetText(void) const noexcept
+	{ return this->m_Text; }
+	
+	inline const std::function<void(std::string)> &Property<Type::TYPE_BUTTON>::GetCallback(void) const noexcept
+	{ return this->m_Callback; }
+
+	using AnyProperty = std::variant
 	<
 		Property<Type::TYPE_TEXT>,
 		Property<Type::TYPE_IMAGE>,

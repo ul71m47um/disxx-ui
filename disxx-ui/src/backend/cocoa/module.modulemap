@@ -1,0 +1,5 @@
+module IRBridge {
+    header "bridge.hpp"
+
+    export *
+}

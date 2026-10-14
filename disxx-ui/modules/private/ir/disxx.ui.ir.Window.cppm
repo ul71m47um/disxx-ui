@@ -26,21 +26,21 @@ export namespace disxx::ui::ir
 		inline std::string_view GetTitle(void) const noexcept;
 	};
 
-	inline void AddWidget(Widget &&widget) noexcept
-	{ this->m_Widgets.emplace_back(std::forward<Widget &&>(widget); }
+	inline void Window::AddWidget(Widget &&widget) noexcept
+	{ this->m_Widgets.emplace_back(std::forward<Widget &&>(widget)); }
 
-	inline void SetSize(const std::array<float, 2> size) noexcept
+	inline void Window::SetSize(const std::array<float, 2> size) noexcept
 	{ this->m_Size = size; }
 	
-	inline void SetTitle(std::string_view title) noexcept
+	inline void Window::SetTitle(std::string_view title) noexcept
 	{ this->m_Title = title; }
 
-	inline const std::vector<Widget> &GetWidgets(void) const noexcept
+	inline const std::vector<Widget> &Window::GetWidgets(void) const noexcept
 	{ return this->m_Widgets; }
 	
-	inline const std::array<float, 2> &GetSize(void) const noexcept
+	inline const std::array<float, 2> &Window::GetSize(void) const noexcept
 	{ return this->m_Size; }
 	
-	inline std::string_view GetTitle(void) const noexcept
+	inline std::string_view Window::GetTitle(void) const noexcept
 	{ return this->m_Title; }
 } /* disxx::ui::ir */
