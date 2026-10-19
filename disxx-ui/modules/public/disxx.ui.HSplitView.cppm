@@ -8,13 +8,13 @@ export namespace disxx::ui::ir
 	{
 	  public:
 		explicit HSplitView(void) noexcept = default;
-		template <typename Args...> explicit HSplitView(Args &&...) noexcept;
+		template <typename ...Args> explicit HSplitView(Args &&...) noexcept;
 
 		HSplitView(const HSplitView &) noexcept = default;
 		HSplitView &operator=(const HSplitView &) noexcept = default;
 	};
 
-	template <typename Args...> HSplitView::HSplitView(Args &&...args) noexcept
+	template <typename ...Args> HSplitView::HSplitView(Args &&...args) noexcept
 		: Container{std::forward<Args>(args...)}
 	{}
 } /* disxx::ui::ir */

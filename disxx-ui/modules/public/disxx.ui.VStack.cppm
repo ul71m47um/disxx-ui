@@ -8,13 +8,13 @@ export namespace disxx::ui::ir
 	{
 	  public:
 		explicit VStack(void) noexcept = default;
-		template <typename Args...> explicit VStack(Args &&...) noexcept;
+		template <typename ...Args> explicit VStack(Args &&...) noexcept;
 
 		VStack(const VStack &) noexcept = default;
 		VStack &operator=(const VStack &) noexcept = default;
 	};
 
-	template <typename Args...> VStack::VStack(Args &&...args) noexcept
+	template <typename ...Args> VStack::VStack(Args &&...args) noexcept
 		: Container{std::forward<Args>(args...)}
 	{}
 } /* disxx::ui::ir */

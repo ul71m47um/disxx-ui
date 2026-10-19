@@ -58,6 +58,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84F63EB430767A1C00E1C3FA /* Build configuration list for PBXNativeTarget "disxx-ui" */;
 			buildPhases = (
+				849D2BE9308388B30077A4AC /* ShellScript */,
 				84F63EA630767A1C00E1C3FA /* Headers */,
 				84F63EA730767A1C00E1C3FA /* Sources */,
 				84F63EA830767A1C00E1C3FA /* Frameworks */,
@@ -115,6 +116,56 @@
 			);
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		849D2BE9308388B30077A4AC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			shellPath = /usr/bin/ruby;
+			shellScript = (
+				"#!/usr/bin/ruby",
+				"",
+				"require \"shellwords\"",
+				"require \"open3\"",
+				"",
+				"if __FILE__ == $0",
+				"    Dir.mkdir(\"#{ENV[\"DERIVED_FILE_DIR\"]}/precompiled/\") if !Dir.exists? \"#{ENV[\"DERIVED_FILE_DIR\"]}/precompiled/\"",
+				"    Dir.mkdir(ENV[\"OBJECT_FILE_DIR\"]) if !Dir.exists? ENV[\"OBJECT_FILE_DIR\"]",
+				"",
+				"    File.open(ENV[\"SCRIPT_INPUT_FILE_LIST_0\"]) do |file|",
+				"        file.readlines.each do |src|",
+				"            src = src.gsub /\\n$/, ''",
+				"            ",
+				"            next if src.empty?",
+				"  ",
+				"            _, stderr, status = Open3.capture3(",
+				"                \"xcrun\", \"clang++\",",
+				"                *Shellwords.shellsplit(ENV[\"OTHER_CPLUSPLUSFLAGS\"] || \"\"),",
+				"                \"-std=#{ENV[\"CLANG_CXX_LANGUAGE_STANDARD\"]}\",",
+				"                \"-fmodule-output=#{ENV[\"DERIVED_FILE_DIR\"]}/precompiled/#{File.basename(src.gsub /\\.cppm$/, \".pcm\")}\",",
+				"                \"-c\", src,",
+				"                \"-o\", \"#{ENV[\"OBJECT_FILE_DIR\"]}/#{File.basename(src).gsub /\\.cppm$/, \"-mod.o\"}\"",
+				"            )",
+				"            ",
+				"            warn stderr",
+				"            ",
+				"            exit status.exitstatus if !status.success?",
+				"        end",
+				"    end",
+				"    ",
+				"    File.open(ENV[\"SCRIPT_OUTPUT_FILE_LIST_0\"]) do |file|",
+				"        ENV[\"ARCHS\"].split ' ' do |arch|",
+				"            File.open(ENV[\"LINK_FILE_LIST_normal_#{arch}\"], 'a') do |list|",
+				"                file.readlines.each do |obj|",
+				"                    list.write obj",
+				"                end",
+				"            end",
+				"        end",
+				"    end",
+				"end",
+				"",
+			);
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84F63EA730767A1C00E1C3FA /* Sources */ = {

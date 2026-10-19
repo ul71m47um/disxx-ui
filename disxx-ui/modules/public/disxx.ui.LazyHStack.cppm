@@ -8,13 +8,13 @@ export namespace disxx::ui::ir
 	{
 	  public:
 		explicit LazyHStack(void) noexcept = default;
-		template <typename Args...> explicit LazyHStack(Args &&...) noexcept;
+		template <typename ...Args> explicit LazyHStack(Args &&...) noexcept;
 
 		LazyHStack(const LazyHStack &) noexcept = default;
 		LazyHStack &operator=(const LazyHStack &) noexcept = default;
 	};
 
-	template <typename Args...> LazyHStack::LazyHStack(Args &&...args) noexcept
+	template <typename ...Args> LazyHStack::LazyHStack(Args &&...args) noexcept
 		: Container{std::forward<Args>(args...)}
 	{}
 } /* disxx::ui::ir */

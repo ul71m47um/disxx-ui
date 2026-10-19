@@ -8,13 +8,13 @@ export namespace disxx::ui::ir
 	{
 	  public:
 		explicit List(void) noexcept = default;
-		template <typename Args...> explicit List(Args &&...) noexcept;
+		template <typename ...Args> explicit List(Args &&...) noexcept;
 
 		List(const List &) noexcept = default;
 		List &operator=(const List &) noexcept = default;
 	};
 
-	template <typename Args...> List::List(Args &&...args) noexcept
+	template <typename ...Args> List::List(Args &&...args) noexcept
 		: Container{std::forward<Args>(args...)}
 	{}
 } /* disxx::ui::ir */

@@ -8,13 +8,13 @@ export namespace disxx::ui::ir
 	{
 	  public:
 		explicit HStack(void) noexcept = default;
-		template <typename Args...> explicit HStack(Args &&...) noexcept;
+		template <typename ...Args> explicit HStack(Args &&...) noexcept;
 
 		HStack(const HStack &) noexcept = default;
 		HStack &operator=(const HStack &) noexcept = default;
 	};
 
-	template <typename Args...> HStack::HStack(Args &&...args) noexcept
+	template <typename ...Args> HStack::HStack(Args &&...args) noexcept
 		: Container{std::forward<Args>(args...)}
 	{}
 } /* disxx::ui::ir */
