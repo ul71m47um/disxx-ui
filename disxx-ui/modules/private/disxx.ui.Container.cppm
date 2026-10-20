@@ -48,7 +48,7 @@ namespace disxx::ui
 
 		return std::move(widgets);
 	}
-	
+
 	export class __attribute__((visibility("default"))) [[nodiscard]] Container : public Widget
 	{
 	  private:

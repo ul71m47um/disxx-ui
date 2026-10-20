@@ -4,6 +4,14 @@ import disxx.ui.ir.Widget;
 
 export namespace disxx::ui
 {
-	template <typename T>
-	concept Widget = requires(T widget) { { widget.ProduceIntermidiateRepresentation() } -> std::same_as<ir::Widget> };
+	class __attribute__((visibility("default"))) [[nodiscard]] Widget : public Clone
+	{
+	  public:
+		explicit Widget(void) noexcept = default;
+	
+		Widget(const Widget &) noexcept = default;
+		Widget &operator=(const Widget &) noexcept = default;
+
+		virtual ir::Widget ProduceIntermidiateRepresentation(void) const noexcept = 0;
+	};
 } /* disxx::ui */
