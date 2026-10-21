@@ -12,6 +12,8 @@ export namespace disxx::ui::ir
 
 		List(const List &) noexcept = default;
 		List &operator=(const List &) noexcept = default;
+	
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 	};
 
 	template <typename ...Args> List::List(Args &&...args) noexcept

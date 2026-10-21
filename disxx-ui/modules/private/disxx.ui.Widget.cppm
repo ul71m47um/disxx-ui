@@ -1,5 +1,6 @@
 export module disxx.ui.Widget;
 
+import disxx.utility.Clone;
 import disxx.ui.ir.Widget;
 
 export namespace disxx::ui

@@ -14,9 +14,10 @@ export namespace disxx::ui
 		explicit Text(std::string_view) noexcept;
 
 		Text(const Text &) noexcept = default;
-		Text &operator=(const Text &) = default;
+		Text &operator=(const Text &) noexcept = default;
 
 		virtual ~Text(void) noexcept override = default;
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 		virtual ir::Widget ProduceIntermidiateRepresentation(void) const noexcept override;
 	};
 } /* disxx::ui */

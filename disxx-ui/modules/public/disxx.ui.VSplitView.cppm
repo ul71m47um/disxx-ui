@@ -12,6 +12,8 @@ export namespace disxx::ui::ir
 
 		VSplitView(const VSplitView &) noexcept = default;
 		VSplitView &operator=(const VSplitView &) noexcept = default;
+	
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 	};
 
 	template <typename ...Args> VSplitView::VSplitView(Args &&...args) noexcept

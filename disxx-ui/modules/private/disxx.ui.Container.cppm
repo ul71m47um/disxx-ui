@@ -58,8 +58,11 @@ namespace disxx::ui
 		explicit Container(void) noexcept = default;
 		template <typename... Args> explicit Container(WidgetList<Args> &&) noexcept;
 
-		Container(const Container &) noexcept = default;
-		Container &operator=(const Container &) noexcept = default;
+		Container(const Container &) noexcept;
+		Container &operator=(const Container &) noexcept;
+
+		Container(Container &&) noexcept;
+		Container &operator=(Container &&) noexcept;
 
 		virtual ir::Widget ProduceIntermidiateRepresentation(void) const noexcept override;
 	};

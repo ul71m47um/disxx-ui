@@ -12,6 +12,8 @@ export namespace disxx::ui::ir
 
 		Tree(const Tree &) noexcept = default;
 		Tree &operator=(const Tree &) noexcept = default;
+	
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 	};
 
 	template <typename ...Args> Tree::Tree(Args &&...args) noexcept

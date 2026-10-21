@@ -12,6 +12,8 @@ export namespace disxx::ui::ir
 
 		HStack(const HStack &) noexcept = default;
 		HStack &operator=(const HStack &) noexcept = default;
+	
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 	};
 
 	template <typename ...Args> HStack::HStack(Args &&...args) noexcept

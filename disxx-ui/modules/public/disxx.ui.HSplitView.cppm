@@ -12,6 +12,8 @@ export namespace disxx::ui::ir
 
 		HSplitView(const HSplitView &) noexcept = default;
 		HSplitView &operator=(const HSplitView &) noexcept = default;
+	
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 	};
 
 	template <typename ...Args> HSplitView::HSplitView(Args &&...args) noexcept

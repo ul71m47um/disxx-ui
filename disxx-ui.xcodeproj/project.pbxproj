@@ -120,6 +120,12 @@
 /* Begin PBXShellScriptBuildPhase section */
 		849D2BE9308388B30077A4AC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			inputFileListPaths = (
+				"$(SRCROOT)/disxx-ui/modules.xcfilelist",
+			);
+			outputFileListPaths = (
+				"$(SRCROOT)/disxx-ui/objects.xcfilelist",
+			);
 			shellPath = /usr/bin/ruby;
 			shellScript = (
 				"#!/usr/bin/ruby",

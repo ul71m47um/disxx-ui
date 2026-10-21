@@ -12,6 +12,8 @@ export namespace disxx::ui::ir
 
 		LazyVStack(const LazyVStack &) noexcept = default;
 		LazyVStack &operator=(const LazyVStack &) noexcept = default;
+	
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 	};
 
 	template <typename ...Args> LazyVStack::LazyVStack(Args &&...args) noexcept

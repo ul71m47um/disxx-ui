@@ -12,6 +12,8 @@ export namespace disxx::ui::ir
 
 		ScrollView(const ScrollView &) noexcept = default;
 		ScrollView &operator=(const ScrollView &) noexcept = default;
+	
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 	};
 
 	template <typename ...Args> ScrollView::ScrollView(Args &&...args) noexcept

@@ -14,9 +14,10 @@ export namespace disxx::ui
 		explicit Image(std::filesystem::path) noexcept;
 
 		Image(const Image &) noexcept = default;
-		Image &operator=(const Image &) = default;
+		Image &operator=(const Image &) noexcept = default;
 
 		virtual ~Image(void) noexcept override = default;
 		virtual ir::Widget ProduceIntermidiateRepresentation(void) const noexcept override;
+		virtual std::unique_ptr<Widget> Clone(void) const noexcept override;
 	};
 } /* disxx::ui */
