@@ -10,71 +10,16 @@
 		84F34F3E3087843600ECD5CE /* mapped.h in Headers */ = {isa = PBXBuildFile; fileRef = 84F34F203087843600ECD5CE /* mapped.h */; };
 		84F34F3F3087843600ECD5CE /* disxx.utility.error.ParserError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F2D3087843600ECD5CE /* disxx.utility.error.ParserError.cpp */; };
 		84F34F403087843600ECD5CE /* disxx.utility.file.MappedFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F2F3087843600ECD5CE /* disxx.utility.file.MappedFile.cpp */; };
-		84F34F413087843600ECD5CE /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F3A3087843600ECD5CE /* Makefile */; };
 		84F34F423087843600ECD5CE /* disxx.utility.ini.BaseParser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F333087843600ECD5CE /* disxx.utility.ini.BaseParser.cpp */; };
 		84F34F433087843600ECD5CE /* disxx.utility.error.NullPointerError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F2C3087843600ECD5CE /* disxx.utility.error.NullPointerError.cpp */; };
 		84F34F443087843600ECD5CE /* disxx.utility.ini.Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F343087843600ECD5CE /* disxx.utility.ini.Parser.cpp */; };
-		84F34F453087843600ECD5CE /* mapped.s in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F313087843600ECD5CE /* mapped.s */; };
 		84F34F463087843600ECD5CE /* disxx-utility.docc in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F393087843600ECD5CE /* disxx-utility.docc */; };
 		84F34F473087843600ECD5CE /* disxx.utility.ini.Reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F353087843600ECD5CE /* disxx.utility.ini.Reader.cpp */; };
 		84F34F483087843600ECD5CE /* disxx.utility.ini.Writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F363087843600ECD5CE /* disxx.utility.ini.Writer.cpp */; };
-		84F34F493087843600ECD5CE /* mapped.c in Sources */ = {isa = PBXBuildFile; fileRef = 84F34F303087843600ECD5CE /* mapped.c */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		8436FBA23070304200CC03DE /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = PrivateModules/error;
-			dstSubfolder = Executables;
-			files = (
-			);
-		};
-		848E5E713075047C00D438DC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = PrivateModules/ini;
-			dstSubfolder = Executables;
-			files = (
-			);
-		};
-		848E5E763075049C00D438DC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = PrivateModules/pointer;
-			dstSubfolder = Executables;
-			files = (
-			);
-		};
-		848E5E79307504B200D438DC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = Modules;
-			dstSubfolder = Executables;
-			files = (
-			);
-		};
-		848E5E7D307504C900D438DC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = Modules/pointer;
-			dstSubfolder = Executables;
-			files = (
-			);
-		};
-		848E5E82307504F700D438DC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = Modules/ini;
-			dstSubfolder = Executables;
-			files = (
-			);
-		};
-		848E5E853075051700D438DC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			dstPath = Modules/file;
-			dstSubfolder = Executables;
-			files = (
-			);
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		8450B9BF306D0F5800C1803E /* disxx-utility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "disxx-utility.framework"; path = "/Users/admin/disxx-ui/build/Debug/disxx-utility.framework"; sourceTree = "<absolute>"; };
+		8450B9BF306D0F5800C1803E /* disxx-utility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "disxx-utility.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F34F153087843600ECD5CE /* disxx.utility.error.NullPointerError.cppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = disxx.utility.error.NullPointerError.cppm; sourceTree = "<group>"; };
 		84F34F163087843600ECD5CE /* disxx.utility.error.ParserError.cppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = disxx.utility.error.ParserError.cppm; sourceTree = "<group>"; };
 		84F34F183087843600ECD5CE /* disxx.utility.ini.BaseParser.cppm */ = {isa = PBXFileReference; lastKnownFileType = text; path = disxx.utility.ini.BaseParser.cppm; sourceTree = "<group>"; };
@@ -117,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				84F34F3D3087843600ECD5CE /* disxx-utility */,
+				8450B9BF306D0F5800C1803E /* disxx-utility.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,13 +224,6 @@
 				8450B9BA306D0F5800C1803E /* Headers */,
 				8450B9BB306D0F5800C1803E /* Sources */,
 				8450B9BC306D0F5800C1803E /* Frameworks */,
-				8436FBA23070304200CC03DE /* CopyFiles */,
-				848E5E713075047C00D438DC /* CopyFiles */,
-				848E5E763075049C00D438DC /* CopyFiles */,
-				848E5E79307504B200D438DC /* CopyFiles */,
-				848E5E7D307504C900D438DC /* CopyFiles */,
-				848E5E82307504F700D438DC /* CopyFiles */,
-				848E5E853075051700D438DC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -417,15 +356,12 @@
 			files = (
 				84F34F3F3087843600ECD5CE /* disxx.utility.error.ParserError.cpp in Sources */,
 				84F34F403087843600ECD5CE /* disxx.utility.file.MappedFile.cpp in Sources */,
-				84F34F413087843600ECD5CE /* Makefile in Sources */,
 				84F34F423087843600ECD5CE /* disxx.utility.ini.BaseParser.cpp in Sources */,
 				84F34F433087843600ECD5CE /* disxx.utility.error.NullPointerError.cpp in Sources */,
 				84F34F443087843600ECD5CE /* disxx.utility.ini.Parser.cpp in Sources */,
-				84F34F453087843600ECD5CE /* mapped.s in Sources */,
 				84F34F463087843600ECD5CE /* disxx-utility.docc in Sources */,
 				84F34F473087843600ECD5CE /* disxx.utility.ini.Reader.cpp in Sources */,
 				84F34F483087843600ECD5CE /* disxx.utility.ini.Writer.cpp in Sources */,
-				84F34F493087843600ECD5CE /* mapped.c in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */

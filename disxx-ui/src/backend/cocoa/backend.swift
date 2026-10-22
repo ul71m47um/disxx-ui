@@ -139,7 +139,8 @@ private struct TextInputView: View {
     }
 }
 
-final class Translator {
+private final class Translator {
+    @MainActor
     public static func mkview(_ widget: disxx.ui.bridge.Widget) -> any View {
         switch widget.GetType() {
         case .TYPE_TEXT:
@@ -264,6 +265,7 @@ final class Translator {
         }
     }
     
+    @MainActor
     public static func mkwin(_ window: disxx.ui.bridge.Window) -> NSWindow? {
         let size: [CFloat] = Array(window.GetSize())
         
@@ -298,10 +300,12 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
         self.window?.isReleasedWhenClosed = false
         self.window?.delegate = self
         self.window?.contentView = NSHostingView(
-            rootView: ForEach(self.widgets.map { w in WidgetWrapper(widget: w) } ) { widget in
-                AnyView(Translator.mkview(widget.widget))
-            }
-        )
+            rootView: ForEach(
+                self.widgets.map { w in WidgetWrapper(widget: w) }
+            ) { widget in
+                    AnyView(Translator.mkview(widget.widget))
+                }
+            )
     }
     
     public func exec() -> Void {
@@ -317,7 +321,7 @@ private final class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWind
 }
 
 @_expose(Cxx)
-public final class Engine: Sendable {
+public final class NativeEngine: Sendable {
     private let appDelegate: ApplicationDelegate
   
     @_expose(Cxx)
@@ -326,8 +330,9 @@ public final class Engine: Sendable {
     }
   
     @_expose(Cxx)
-    public func exec() -> Void {
+    public func exec() -> CInt {
         main { self.appDelegate.exec() }
+        return 0
     }
     
     @_expose(Cxx)

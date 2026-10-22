@@ -6,13 +6,83 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXCopyFilesBuildPhase section */
+		84E6351B308A112400506EC4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = Modules;
+			dstSubfolder = Executables;
+			files = (
+			);
+		};
+		84E6351D308A114B00506EC4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = PrivateModules/ir;
+			dstSubfolder = Executables;
+			files = (
+			);
+		};
+		84E63522308A116600506EC4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			dstPath = PrivateModules;
+			dstSubfolder = Executables;
+			files = (
+			);
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		84F63EAB30767A1C00E1C3FA /* disxx-ui.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "disxx-ui.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		84E6351C308A112C00506EC4 /* Exceptions for "disxx-ui" folder in "Copy Files" phase from "disxx-ui" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 84E6351B308A112400506EC4 /* CopyFiles */;
+			membershipExceptions = (
+				modules/private/disxx.ui.Container.cppm,
+				modules/private/disxx.ui.Widget.cppm,
+				modules/public/disxx.ui.Button.cppm,
+				modules/public/disxx.ui.HSplitView.cppm,
+				modules/public/disxx.ui.HStack.cppm,
+				modules/public/disxx.ui.Image.cppm,
+				modules/public/disxx.ui.LazyHStack.cppm,
+				modules/public/disxx.ui.LazyVStack.cppm,
+				modules/public/disxx.ui.List.cppm,
+				modules/public/disxx.ui.ScrollView.cppm,
+				modules/public/disxx.ui.Text.cppm,
+				modules/public/disxx.ui.TextInput.cppm,
+				modules/public/disxx.ui.Tree.cppm,
+				modules/public/disxx.ui.VSplitView.cppm,
+				modules/public/disxx.ui.VStack.cppm,
+			);
+		};
+		84E63521308A116100506EC4 /* Exceptions for "disxx-ui" folder in "Copy Files" phase from "disxx-ui" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 84E6351D308A114B00506EC4 /* CopyFiles */;
+			membershipExceptions = (
+				"modules/private/ir/disxx.ui.ir.Widget-Property.cppm",
+				modules/private/ir/disxx.ui.ir.Widget.cppm,
+				modules/private/ir/disxx.ui.ir.Window.cppm,
+			);
+		};
+		84E63525308A117500506EC4 /* Exceptions for "disxx-ui" folder in "Copy Files" phase from "disxx-ui" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 84E63522308A116600506EC4 /* CopyFiles */;
+			membershipExceptions = (
+				modules/private/disxx.ui.Container.cppm,
+				modules/private/disxx.ui.Widget.cppm,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		84F63EAD30767A1C00E1C3FA /* disxx-ui */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				84E63521308A116100506EC4 /* Exceptions for "disxx-ui" folder in "Copy Files" phase from "disxx-ui" target */,
+				84E63525308A117500506EC4 /* Exceptions for "disxx-ui" folder in "Copy Files" phase from "disxx-ui" target */,
+				84E6351C308A112C00506EC4 /* Exceptions for "disxx-ui" folder in "Copy Files" phase from "disxx-ui" target */,
+			);
 			path = "disxx-ui";
 			sourceTree = "<group>";
 		};
@@ -62,7 +132,9 @@
 				84F63EA630767A1C00E1C3FA /* Headers */,
 				84F63EA730767A1C00E1C3FA /* Sources */,
 				84F63EA830767A1C00E1C3FA /* Frameworks */,
-				84F63EA930767A1C00E1C3FA /* Resources */,
+				84E6351D308A114B00506EC4 /* CopyFiles */,
+				84E63522308A116600506EC4 /* CopyFiles */,
+				84E6351B308A112400506EC4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -109,19 +181,14 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		84F63EA930767A1C00E1C3FA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			files = (
-			);
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXShellScriptBuildPhase section */
 		849D2BE9308388B30077A4AC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			inputFileListPaths = (
 				"$(SRCROOT)/disxx-ui/modules.xcfilelist",
+			);
+			inputPaths = (
+				"$(SRCROOT)/src/backend/cocoa/backend.swift",
 			);
 			outputFileListPaths = (
 				"$(SRCROOT)/disxx-ui/objects.xcfilelist",
@@ -339,7 +406,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/disxx-ui/src/backend/cocoa/";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/disxx-ui/src/backend/cocoa/bridge/";
 				SWIFT_INSTALL_MODULE = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTEROP_MODE = objcxx;
@@ -388,7 +455,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/disxx-ui/src/backend/cocoa/";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/disxx-ui/src/backend/cocoa/bridge/";
 				SWIFT_INSTALL_MODULE = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OBJC_INTEROP_MODE = objcxx;
