@@ -4,9 +4,12 @@
 #include <type_traits>
 #include <filesystem>
 #include <functional>
+#include <concepts>
 #include <optional>
 #include <variant>
+#include <vector>
 #include <string>
+#include <array>
 
 namespace disxx::ui::bridge
 {
